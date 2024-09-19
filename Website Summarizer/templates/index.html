@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarizer</title>
+    <style>
+    .image-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: #fff;
+    }
+    .image-container img:hover{
+        border: 1px solid #000000;
+    }
+    .image-container img {
+        max-width: 45%;  /* Ensure images are responsive */
+        height: auto;
+        border-radius: 5px;
+        margin: 10px;    /* Add some spacing around the images */
+        border: 1px solid antiquewhite;  /* Optional: add a border for better visibility */
+        background-color: aliceblue;
+    }
+    body{
+        background-image: linear-gradient(rgba(86, 90, 113, 0.5),rgba(86,90,113,0.5)), url("../static/background_img.png");
+        background-size: cover;}
+    h1{
+        color:aliceblue;
+        text-align: center;
+        text-shadow: 2px 2px 4px #05b2c1;
+        font-size:xx-large;
+    }
+    h3{
+        color: aliceblue;
+        text-shadow: 2px 2px 4px #05b2c1;
+    }   
+    label{
+        color: #fff;
+        margin-left: 10px;
+        margin-right: 10px;
+        opacity: 1.5;
+        text-shadow: 2px 2px 4px #05b2c1;
+        font-weight: bold;
+        position:relative;
+                left:35%;
+    }           
+    input:hover{
+        color: #230a8a;
+        display: inline-block;
+        padding: 4px ;
+        background:#e7f1f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.1s;
+        opacity: 0.6;
+    }     
+    input{
+        opacity: 0.6;
+        color: rgb(0, 0, 0);
+        position:relative;
+                left:35%;
+        margin-right: 2px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    div.desc {
+        color:aliceblue;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: larger;
+        font-style: italic;
+        font-weight:500;
+        text-align:center;
+    }    
+    </style>
+</head>
+<body>
+    <h1>Summarize Your Website </h1>
+    <form action="/generate" method="POST">
+        <label for="url">Enter URL:</label>
+        <input autocomplete="off" type="text" placeholder="Here..." id="url" name="url" required>
+        <input  type="submit" value="Summarize">
+    </form>
+
+    {% if image1 and image2 %}
+    <div class="image-container">
+        <img src="{{ url_for('static', filename=image1) }}" alt="Image 1">
+        <div class="desc"><br><h3>KeyWords:</h3>"This website is designed to automatically extract<br> 
+            the key points from extensive textual content, <br>
+            such as articles, blog posts, reports, and more.<br>
+            By employing data analytics in the backend,<br>
+            it transforms large volumes of text into concise,<br>
+            high-quality summaries, significantly reducing the <br>
+            time required for reading and comprehension."
+        </div>   
+    </div>
+    <div class="image-container">
+        <div class="desc"><br><h3>Related Images:</h3>"Website image scraping extracts images from <br>
+            web pages, and data analytics processes the collected <br>
+            images in the backend. This includes tasks like image <br>
+            classification, tagging, sentiment analysis, and visual<br>
+            recognition, providing insights for market research, <br>
+            content moderation, and brand monitoring. Legal and <br>
+            ethical considerations are essential."</div>
+        <img src="{{ url_for('static', filename=image2) }}" alt="Image 2">      
+    </div>
+    {% endif %}
+</body>
+</html>
